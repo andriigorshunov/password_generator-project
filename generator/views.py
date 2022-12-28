@@ -16,13 +16,7 @@ def home(request):
         has_upper_case = request.POST.get('upper_case', 'off')  # on or off
         has_numbers = request.POST.get('numbers', 'off')
         has_special_characters = request.POST.get("special_characters", 'off')
-        print("---------------------------------")
-        print(
-            f"Pass length: {pass_length}, UpperCase: {has_upper_case}, Numbers: {has_numbers}, Special Characters: {has_special_characters}")
-        print(type(has_upper_case), type(has_numbers), type(has_special_characters))
-        print("---------------------------------")
         password = generate_pass(pass_length, has_upper_case, has_numbers, has_special_characters)
-
         return render(request, "generator/home.html", {"password": password})
     else:
         return render(request, "generator/home.html")
